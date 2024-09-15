@@ -1,6 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
+    id("org.jetbrains.kotlin.kapt") // Use 'id' to apply kapt plugin in Kotlin DSL
+
+    // id("com.google.devtools.ksp")
+
 }
 
 android {
@@ -36,9 +41,6 @@ android {
 }
 
 dependencies {
-    // implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
-
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -47,4 +49,17 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+
+    val roomVersion = "2.5.0" // Use the latest version of Room available
+
+    // Room components
+    implementation("androidx.room:room-runtime:$roomVersion")
+
+    kapt("androidx.room:room-compiler:$roomVersion")
+    // ksp("androidx.room:room-compiler:$roomVersion")
+
+
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
 }
